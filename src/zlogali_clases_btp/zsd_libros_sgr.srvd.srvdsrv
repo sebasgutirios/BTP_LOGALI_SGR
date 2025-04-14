@@ -1,0 +1,5 @@
+@EndUserText.label: 'SERVICE DEFINITION LIBROS'
+define service ZSD_LIBROS_SGR {
+  expose ZCDS_LIBROS_SGR  as Libros;
+  expose ZCDS_CLIENTE_SGR as Clientes;
+}
