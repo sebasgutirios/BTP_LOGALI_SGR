@@ -8,6 +8,7 @@
     dataClass: #MIXED
 }
 //@Metadata.allowExtensions: true
+@Metadata.allowExtensions: true
 define view entity ZCDS_CLIENTE_SGR
   as select from ztb_clientes_sgr as Clientes
     inner join   ztb_cli_lib_sgr  as ClientesLibros on ClientesLibros.id_cliente = Clientes.id_cliente

@@ -1,3 +1,4 @@
+//DCL - Data conbtrol lenguage
 @AbapCatalog.viewEnhancementCategory: [#NONE]
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'VIEW CDS DATA TABLE'
@@ -7,7 +8,10 @@
     sizeCategory: #S,
     dataClass: #MIXED
 }
-//@Metadata.allowExtensions: true
+@Metadata.allowExtensions: true
+
+//de aca para abajo es: lenguage DDL - data definition lenguaje 
+
 define view entity ZCDS_LIBROS_SGR
   as select from    ztb_libros_sgr   as Libros
     inner join      ztb_categ_sgr    as Categorias on Libros.bi_categ = Categorias.bi_categ
@@ -25,7 +29,8 @@ define view entity ZCDS_LIBROS_SGR
       @Semantics.amount.currencyCode : 'Moneda'
       Libros.precio          as Precio,
       Libros.moneda          as Moneda,
-
+      
+      //para mostrar un icono Ventas
       case
       when Ventas.Ventas <1 then 0
             when Ventas.Ventas = 1 then 1

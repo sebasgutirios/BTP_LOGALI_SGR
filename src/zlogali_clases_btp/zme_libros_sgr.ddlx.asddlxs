@@ -51,7 +51,8 @@ annotate entity ZCDS_LIBROS_SGR
   @Search.defaultSearchElement: true
   @Search.fuzzinessThreshold: 0.9
   @Search.ranking: #HIGH
-  @UI: { selectionField: [{ position: 40 }]}
+  //con selectionField se crea filtro o busqueda
+  @UI: { selectionField: [{ position: 40 }]} 
   @UI: { lineItem: [{ position: 81,
                       importance: #HIGH }]}
   Editorial;
@@ -59,7 +60,7 @@ annotate entity ZCDS_LIBROS_SGR
   @UI: { lineItem: [{ position: 20,
                       importance: #HIGH }]}
   Autor;
-  
+  //con Consumption.valueHelpDefinition se crea una ayuda de busqueda con valores
   @Consumption.valueHelpDefinition: [{ entity:{ name: 'zcds_catego_lgl',
                                                 element: 'Descripcion'} }]
   @UI: { fieldGroup: [{ qualifier: 'DetallesLibro',
