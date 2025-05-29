@@ -1,0 +1,138 @@
+@Metadata.layer: #CORE
+
+@UI: {  headerInfo: {
+    typeName: 'Travel',            // nombre normal
+    typeNamePlural: 'Travels',     //nombre en plural cuando hay mas de 1
+    title: {
+        type: #STANDARD,
+        value: 'TravelID'          //Como se proyecta la entidad C, se toma el travelID y se va a mostar
+            }},
+           presentationVariant: [{ sortOrder: [{ by: 'TravelID',                  //ordena el campo TravelID
+                                                 direction: #DESC }],
+                                   visualizations: [{ type: #AS_LINEITEM }]       //visualizacion de esta entidad
+                                              }] }
+annotate entity Z360_C_TRAVEL_SGR with
+{
+
+  //Esto es para el primer cuadrado cuando se ingresa a un registro Travel y Booking
+  @UI.facet : [
+              { id: 'Travel',
+                purpose: #STANDARD,
+                type: #IDENTIFICATION_REFERENCE,    //los detalles de la seleccion se cargan(digamos selecciono ID1 y se cargan el detalle del ID )
+                label: 'Dats Travel',
+                position: 10
+                },
+
+              { id: 'Booking',
+                purpose: #STANDARD,
+                type: #LINEITEM_REFERENCE,    //Los detalles de la seleccion se cargan(digamos selecciono ID1 y se cargan el detalle del ID )
+                label: 'Dats Booking',
+                targetElement: '_Booking',    //Indicamos la fuente de booking
+                position: 10
+                }]
+  @UI.hidden: true  //Nota: cambiar para ver algun cambio no se que funcion realiza
+  TravelUUID;
+
+  //UI user interface
+  @UI:{
+        lineItem: [{ position: 10,               //Todo esto es paar ubicar el campo TravelID en varias partes de la pantalla como el primero
+                     importance: #HIGH },
+                       { type: #FOR_ACTION,
+                         dataAction: 'acceptTravel',  //Este nombre va a ser el identificador de los botones, Primer boton
+                         label: 'Accept Travel1',     //Este es el nombre de uno de los botones que van a estar la lado del deleted y created
+                         position: 10 },              //Posicion del boton en la barra de botones
+                       { type: #FOR_ACTION,           //Boton 2
+                         dataAction: 'rejectTravel',
+                         label: 'Reject Travel1',
+                         position: 20 },
+                       { type: #FOR_ACTION,             //Boton 3
+                         dataAction: 'deductDiscount',  //Este nombre va a ser el identificador de los botones, Primer boton
+                         label: 'Discount',
+                         position: 30 }
+                          ],
+
+        identification: [{ position: 10,                 // Ubicacion en la pantalla despues de seleccionar un item
+                           label: 'Travel ID'},
+                               { type: #FOR_ACTION,      // se agrega el mismo codigo de type: #FOR_ACTION, ya que al darle click en un item se viaja a otra seccion y ahi se tienen los mismos botones
+                                 dataAction: 'acceptTravel',
+                                 label: 'Accept Travel1',
+                                 position: 10 },
+                               { type: #FOR_ACTION,
+                                 dataAction: 'rejectTravel',
+                                 label: 'Reject Travel1',
+                                 position: 20 },
+                               { type: #FOR_ACTION,             //Boton 3
+                                 dataAction: 'deductDiscount',  //Este nombre va a ser el identificador de los botones, Primer boton
+                                 label: 'Discount',
+                                 position: 30 }
+
+                        ],
+        selectionField: [{ position: 10 }]      // lo mismo de arriba
+    }
+  TravelID;
+
+  @UI:{ lineItem: [{ position: 20, importance: #HIGH }],
+        identification: [{ position: 20 }],
+        selectionField: [{ position: 20 }]}
+  AgencyID;
+
+  @UI:{ lineItem: [{ position: 30, importance: #HIGH }],
+        identification: [{ position: 30 }],
+        selectionField: [{ position: 30 }]}
+  CustomerID;
+
+  @UI:{ lineItem: [{ position: 40, importance: #MEDIUM }],
+        identification: [{ position: 40 }]}
+  BeginDate;
+
+  @UI:{ lineItem: [{ position: 50, importance: #MEDIUM }],
+      identification: [{ position: 50 }]}
+  EndDate;
+
+  @UI:{ lineItem: [{ position: 60, importance: #MEDIUM }],
+      identification: [{ position: 60 }]}
+  BookingFee;
+
+  @UI:{ lineItem: [{ position: 70, importance: #HIGH }],
+      identification: [{ position: 70 }]}
+  TotalPrice;
+
+  @UI:{ lineItem: [{ position: 80, importance: #MEDIUM }],
+      identification: [{ position: 80 }]}
+  Description;
+
+  @UI:{ lineItem: [{ position: 90, importance: #HIGH }],
+      identification: [{ position: 90 }],
+      selectionField: [{ position: 40 }],
+      textArrangement: #TEXT_ONLY } //muestra solo el texto
+  OverallStatus;
+
+  @UI.hidden: true //Nota: cambiar para ver algun cambio no se que funcion realiza
+  OverallStatusText;
+
+  @UI.hidden: true
+  LocalCreatedBy;
+
+  @UI.hidden: true
+  LocalCreatedAt;
+
+  @UI.hidden: true
+  LocalLastChangedBy;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+
+  @UI.hidden: true
+  LastChangedAt;
+
+
+
+
+
+
+
+
+
+
+
+}

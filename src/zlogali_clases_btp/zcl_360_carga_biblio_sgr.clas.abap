@@ -11,7 +11,9 @@ ENDCLASS.
 
 
 
-CLASS zcl_360_carga_biblio_sgr IMPLEMENTATION.
+CLASS ZCL_360_CARGA_BIBLIO_SGR IMPLEMENTATION.
+
+
   METHOD if_oo_adt_classrun~main.
 
         data: lt_acc_categ type table of ztb_acc_categ_sg,
@@ -206,5 +208,4 @@ CLASS zcl_360_carga_biblio_sgr IMPLEMENTATION.
     out->write( 'DONE!' ).
 
   ENDMETHOD.
-
 ENDCLASS.
